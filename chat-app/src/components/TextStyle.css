@@ -1,0 +1,44 @@
+
+.body-container-Light{
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", serif;
+}
+.body-container-Dark{
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", serif;
+    height: 100%;
+    color: white;
+}
+.res{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width:48vw;
+}
+.ip{
+    margin-top: 20px;
+    width: 69vw;
+    height: 20px;
+}
+.treatment-box{
+    display: flex;
+    justify-content: center;
+}
+.treatment{
+    width: calc(48vw * 1.5);
+    height: auto;
+    text-align: left;
+}
+.search-button{
+    padding-top: 2.5px;
+    padding-bottom: 2.7px;
+}
+
+.header-txt-Dark{
+    color:white;
+}
