@@ -2,7 +2,8 @@ import React , {useEffect,useState}from 'react' ;
 import './App.css';
 import InputText from './components/InputText';
 import HeaderFile from './components/HeaderFile';
-
+import SocialMedia from './components/SocialMedia';
+import  './components/HeaderStyle.css';
 function App() {
   const [mode , setMode] = useState('Light')
   const bodyElement = document.body;
@@ -27,9 +28,16 @@ function App() {
   }
   return (
     <div className={`App-${mode}`}>
-      <div className='header-area'>
+      <div className = {`social-media-${mode}`}>
+      <div className='right-items'>
+      <SocialMedia Theme = {mode}/>
+      </div>
+      <div className='center-items'>
+      <HeaderFile mode = {mode}/>
+      </div>
+      <div className='left-items'>
       <button className={`mode-${mode}`} onClick ={changeMode}></button>
-     <HeaderFile mode = {mode}/>
+      </div>
       </div>
      <InputText mode = {mode}/>
     </div>
