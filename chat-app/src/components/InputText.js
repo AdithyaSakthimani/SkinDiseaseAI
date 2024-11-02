@@ -4,7 +4,7 @@ import ArrangePara from './ArrangePara';
 import SocialMedia from './SocialMedia';
 import magnifyingGlass from './images/istockphoto-1151843591-612x612.png'
 let Heading = "Welcome to our Skin Disease Detection AI " ; 
-const InitialText ="your reliable companion for skin health! Our powerful AI tool uses cutting-edge technology to help identify and classify a wide range of skin conditions . Designed to support both healthcare professionals and individuals, our AI provides fast, accurate insights that can make a real difference in early detection and proactive skin care . Easy to use, quick, and highly reliable, we’re here to empower you on your journey to healthier skin  "
+const InitialText ="Your reliable companion for skin health! Our powerful AI tool uses cutting-edge technology to help identify and classify a wide range of skin conditions . Designed to support both healthcare professionals and individuals, our AI provides fast, accurate insights that can make a real difference in early detection and proactive skin care . Easy to use, quick, and highly reliable, we’re here to empower you on your journey to healthier skin  "
 function InputText(props) {
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('Enter some Query');
@@ -62,9 +62,9 @@ function InputText(props) {
                   outputText ==="Fetching Result"?"Generating...":
                      outputText!=="Enter some Query"?`RESULT : ${outputText.toUpperCase()}`:''}
               </h1>
-                <p className='treatment'>
-                      {treatmentPlan}
-                     </p>
+              <p className='treatment' style={{ whiteSpace: 'pre-line' }}>
+    {treatmentPlan}
+</p>
       </div>
       <div className='ip-search'>
       <input

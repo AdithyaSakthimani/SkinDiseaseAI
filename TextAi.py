@@ -1,9 +1,9 @@
-from datasets import load_dataset
-from transformers import AutoTokenizer, AutoModel
 import torch
-from sklearn.metrics.pairwise import cosine_similarity
-from flask import Flask, request, jsonify
+from datasets import load_dataset
+from flask import Flask, jsonify, request
 from flask_cors import CORS
+from sklearn.metrics.pairwise import cosine_similarity
+from transformers import AutoModel, AutoTokenizer
 
 app = Flask(__name__)
 CORS(app)
@@ -72,7 +72,16 @@ def GenResult():
     input_query = data.get('inputText')
     similar_disease = find_similar_disease(input_query, queries, embeddings, tokenizer, model)
     treatment_plan = find_treatment_plan(similar_disease, topics, topic_embeddings, tokenizer2, model2)
-    return jsonify({'result': similar_disease , 'treatment': treatment_plan})
+    cleaned_treatment_plan = treatment_plan.replace("*", "")
+    formatted_treatment_plan = ""
+    for i, line in enumerate(cleaned_treatment_plan.split(". ")):
+        if line.strip():
+            formatted_treatment_plan += f"{i + 1}. {line.strip()}.\n"
+
+    return jsonify({
+        'result': similar_disease,
+        'treatment': formatted_treatment_plan.strip()
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
