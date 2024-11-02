@@ -1,8 +1,12 @@
-from transformers import AutoTokenizer, AutoModel
-from datasets import load_dataset
-from transformers import AutoTokenizer, AutoModel, AutoModelForCausalLM, GenerationConfig
 import torch
+from datasets import load_dataset
 from sklearn.metrics.pairwise import cosine_similarity
+from transformers import (
+    AutoModel,
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    GenerationConfig,
+)
 
 tokenizer1 = AutoTokenizer.from_pretrained("Unmeshraj/skin-disease-detection")
 model1 = AutoModel.from_pretrained("Unmeshraj/skin-disease-detection")
@@ -60,7 +64,11 @@ def find_treatment_plan(disease_name, topics, topic_embeddings, tokenizer2, mode
     most_similar_idx = similarities.index(max(similarities))
     return information[most_similar_idx]
 
-input_query = input("Enter your Symptons here: ")
+input_query = input("Enter your symptoms here: ")
 similar_disease = find_similar_disease(input_query, queries, embeddings, tokenizer1, model1)
 treatment_plan = find_treatment_plan(similar_disease, topics, topic_embeddings, tokenizer2, model2)
-print(f"Treatment Plan for your similar disease: {treatment_plan}")
+cleaned_treatment_plan = treatment_plan.replace("*", "").replace(":", ":\n").replace(". ", ".\n")
+print(f"Treatment Plan for your similar disease:\n{cleaned_treatment_plan}")
+for line in cleaned_treatment_plan.split("\n"):
+    if line.strip():
+        print(f"- {line.strip()}")
