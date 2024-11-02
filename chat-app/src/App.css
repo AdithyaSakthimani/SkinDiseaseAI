@@ -1,16 +1,8 @@
 .App-Light {
-  text-align: center;
   background-color: rgba(33, 33, 33, .5);
 }
 .App-Dark {
-  text-align: center;
   background-color:rgba(33, 33, 33, .9);
-}
-.header-area{
-  display: flex;
-  justify-content: center;
-  column-gap: 30px;
-  align-items: center;
 }
 .mode-Light{
     background-image: url('./components/images/moon(2).jpg');
